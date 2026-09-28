@@ -1,0 +1,36 @@
+{
+    "manifest_version": 3,
+    "name": "TabNotes",
+    "version": "0.3.2",
+    "description": "Notas flutuantes independentes por aba.",
+    "incognito": "split",
+    "permissions": [
+        "storage"
+    ],
+    "background": {
+        "service_worker": "src/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "js": [
+                "src/content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "src/styles.css"
+            ],
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ]
+        }
+    ]
+}

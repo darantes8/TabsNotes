@@ -1,0 +1,742 @@
+/*
+ * INVARIANTE:
+ * Estilos exclusivos da interface TabNotes.
+ *
+ * Este arquivo é carregado dentro de Shadow DOM e nunca deve
+ * depender do CSS da página hospedeira.
+ */
+
+* {
+    box-sizing: border-box;
+}
+
+button,
+input,
+textarea {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ============================================================
+ * BOTÃO NOTAS
+ * ============================================================ */
+
+#tn-notes-button {
+    position: fixed;
+    top: 16px;
+    right: 18px;
+    z-index: 2000000000;
+
+    padding: 8px 13px;
+
+    border: 1px solid #795548;
+    border-radius: 8px;
+
+    background: #b98972;
+    color: #382820;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+    pointer-events: auto;
+
+    box-shadow:
+        0 4px 13px rgba(60, 42, 30, 0.25);
+}
+
+#tn-notes-button:hover {
+    background: #c6977f;
+}
+
+/* ============================================================
+ * CARD
+ * ============================================================ */
+
+.tn-card {
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 220px;
+    min-height: 170px;
+
+    border: 1px solid;
+    border-radius: 8px;
+
+    overflow: visible;
+
+    pointer-events: auto;
+
+    box-shadow:
+        0 8px 23px rgba(55, 38, 27, 0.25);
+}
+
+/* ============================================================
+ * HEADER
+ * ============================================================ */
+
+.tn-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    height: 37px;
+    min-height: 37px;
+
+    padding: 5px 7px;
+
+    gap: 6px;
+
+    cursor: grab;
+
+    user-select: none;
+    touch-action: none;
+}
+
+.tn-header:active {
+    cursor: grabbing;
+}
+
+.tn-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    flex: 0 0 auto;
+}
+
+.tn-icon-button.tn-header-add {
+    width: 27px;
+    height: 27px;
+    border: 0;
+    background: rgba(255, 255, 255, 0.32);
+}
+
+.tn-icon-button.tn-header-add:hover {
+    background: rgba(255, 255, 255, 0.62);
+}
+
+.tn-icon-button.tn-header-add svg {
+    width: 16px;
+    height: 16px;
+}
+
+.tn-title {
+    flex: 1;
+
+    width: 0;
+
+    padding: 3px 5px;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: var(--tn-text-color,
+                #382820);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.tn-title::placeholder {
+    color: var(--tn-text-color,
+            #382820);
+
+    opacity: 0.5;
+}
+
+.tn-collapse {
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    border: 0;
+    border-radius: 7px;
+
+    padding: 0;
+
+    background:
+        rgba(255,
+            255,
+            255,
+            0.32);
+
+    color: var(--tn-text-color, #382820);
+
+    font-size: 20px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.tn-collapse:hover {
+    background:
+        rgba(255,
+            255,
+            255,
+            0.62);
+}
+
+/* ============================================================
+ * TEXT
+ * ============================================================ */
+
+.tn-text {
+    display: block;
+
+    flex: 1;
+
+    width: 100%;
+    min-height: 0;
+
+    padding:
+        5px 14px 10px;
+
+    border: 0;
+    outline: 0;
+
+    resize: none;
+
+    background: transparent;
+
+    color: var(--tn-text-color,
+                #382820);
+
+    line-height: 1.48;
+}
+
+.tn-text::placeholder {
+    color: var(--tn-text-color,
+            #382820);
+
+    opacity: 0.5;
+}
+
+/* ============================================================
+ * TOOLS
+ * ============================================================ */
+
+.tn-tools {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 40px;
+
+    padding:
+        4px 42px 6px 8px;
+
+    gap: 6px;
+
+    user-select: none;
+}
+
+.tn-tools.hidden {
+    display: none;
+}
+
+.tn-icon-button,
+.tn-font-box {
+    height: 29px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    border:
+        1px solid rgba(70,
+            50,
+            38,
+            0.19);
+
+    border-radius: 7px;
+
+    padding: 0;
+
+    background:
+        rgba(255,
+            255,
+            255,
+            0.36);
+
+    color:
+        rgba(42,
+            32,
+            26,
+            0.82);
+
+    cursor: pointer;
+}
+
+.tn-icon-button {
+    width: 29px;
+}
+
+.tn-icon-button:hover,
+.tn-font-box:hover {
+    background:
+        rgba(255,
+            255,
+            255,
+            0.67);
+}
+
+.tn-icon-button svg {
+    width: 17px;
+    height: 17px;
+}
+
+/* ============================================================
+ * FONT +-
+ * ============================================================ */
+
+.tn-font-box {
+    width: 46px;
+    height: 29px;
+    overflow: hidden;
+    margin-right: auto;
+}
+
+.tn-font-action {
+    width: 23px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.tn-font-action +
+.tn-font-action {
+    border-left:
+        1px solid rgba(70, 50, 38, 0.15);
+}
+
+.tn-font-action:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.38);
+}
+
+.tn-font-action:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+/* ============================================================
+ * TOOLS TOGGLE
+ * ============================================================ */
+
+.tn-tools-toggle {
+    position: absolute;
+
+    right: 6px;
+    bottom: 5px;
+
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(70,
+            50,
+            38,
+            0.17);
+
+    border-radius: 7px;
+
+    padding: 0;
+
+    background:
+        rgba(255,
+            255,
+            255,
+            0.35);
+
+    color:
+        rgba(42,
+            32,
+            26,
+            0.8);
+
+    cursor: pointer;
+
+    z-index: 40;
+}
+
+.tn-tools-toggle:hover {
+    background:
+        rgba(255,
+            255,
+            255,
+            0.65);
+}
+
+.tn-tools-toggle svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================================
+ * COLOR BOX / PALETTE
+ * ============================================================ */
+
+.tn-color-box {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    min-width: 29px;
+    max-width: 118px;
+    height: 29px;
+
+    padding-right: 3px;
+
+    border:
+        1px solid rgba(70, 50, 38, 0.19);
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.24);
+
+    overflow: hidden;
+}
+
+.tn-color-box .tn-color-button {
+    flex: 0 0 28px;
+
+    width: 28px;
+    height: 27px;
+
+    border: 0;
+    border-radius: 6px;
+
+    background: transparent;
+}
+
+.tn-color-box .tn-color-button:hover {
+    background:
+        rgba(255, 255, 255, 0.42);
+}
+
+.tn-custom-colors {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+}
+
+.tn-custom-colors::-webkit-scrollbar {
+    display: none;
+}
+
+.tn-custom-color {
+    width: 18px;
+    height: 18px;
+
+    flex: 0 0 18px;
+
+    border:
+        1px solid rgba(35, 28, 24, 0.28);
+    border-radius: 50%;
+
+    padding: 0;
+    cursor: pointer;
+}
+
+.tn-custom-color.selected {
+    outline:
+        2px solid var(--tn-text-color, #382820);
+    outline-offset: 1px;
+}
+
+.tn-palette {
+    position: absolute;
+
+    right: 8px;
+    bottom: 44px;
+
+    display: none;
+
+    grid-template-columns:
+        repeat(6, 28px);
+
+    gap: 7px;
+
+    padding: 10px;
+
+    border:
+        1px solid rgba(70, 50, 38, 0.24);
+    border-radius: 9px;
+
+    background: #efe7e0;
+
+    box-shadow:
+        0 6px 19px rgba(50, 35, 25, 0.26);
+
+    z-index: 500;
+}
+
+.tn-palette.open {
+    display: grid;
+}
+
+.tn-color-option {
+    width: 28px;
+    height: 28px;
+
+    border:
+        1px solid rgba(60, 42, 30, 0.32);
+    border-radius: 50%;
+
+    padding: 0;
+    cursor: pointer;
+
+    transition:
+        transform 100ms;
+}
+
+.tn-color-option:hover {
+    transform:
+        scale(1.12);
+}
+
+.tn-color-option.selected {
+    outline:
+        2px solid rgba(35, 28, 24, 0.82);
+    outline-offset: 2px;
+}
+
+/* ============================================================
+ * COLLAPSED
+ * ============================================================ */
+
+.tn-collapsed {
+    position: fixed;
+
+    width: 190px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        5px 5px 5px 12px;
+
+    gap: 7px;
+
+    border: 1px solid;
+    border-radius: 9px;
+
+    color: var(--tn-text-color, #1F1A17);
+
+    pointer-events: auto;
+
+    touch-action: none;
+
+    cursor: grab;
+
+    box-shadow:
+        0 5px 14px rgba(50,
+            35,
+            25,
+            0.24);
+
+    user-select: none;
+}
+
+.tn-collapsed:active {
+    cursor: grabbing;
+}
+
+.tn-collapsed-title {
+    flex: 1;
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.tn-expand {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    border: 0;
+    border-radius: 7px;
+
+    padding: 0;
+
+    background:
+        rgba(255,
+            255,
+            255,
+            0.38);
+
+    color: inherit;
+
+    cursor: pointer;
+}
+
+.tn-expand:hover {
+    background:
+        rgba(255,
+            255,
+            255,
+            0.7);
+}
+
+.tn-expand svg {
+    width: 17px;
+    height: 17px;
+}
+
+.tn-collapse,
+.tn-header-add,
+.tn-icon-button,
+.tn-font-box,
+.tn-tools-toggle,
+.tn-collapsed,
+.tn-expand,
+.tn-color-box {
+    color: var(--tn-text-color,
+            #382820);
+}
+
+/* ============================================================
+ * RESIZE
+ * ============================================================ */
+
+.tn-resize {
+    position: absolute;
+
+    z-index: 60;
+
+    touch-action: none;
+}
+
+.tn-resize-n {
+    top: -5px;
+    left: 12px;
+    right: 12px;
+
+    height: 10px;
+
+    cursor: ns-resize;
+}
+
+.tn-resize-s {
+    bottom: -5px;
+    left: 12px;
+    right: 12px;
+
+    height: 10px;
+
+    cursor: ns-resize;
+}
+
+.tn-resize-e {
+    top: 12px;
+    right: -5px;
+    bottom: 12px;
+
+    width: 10px;
+
+    cursor: ew-resize;
+}
+
+.tn-resize-w {
+    top: 12px;
+    left: -5px;
+    bottom: 12px;
+
+    width: 10px;
+
+    cursor: ew-resize;
+}
+
+.tn-resize-ne {
+    top: -7px;
+    right: -7px;
+
+    width: 17px;
+    height: 17px;
+
+    cursor: nesw-resize;
+}
+
+.tn-resize-nw {
+    top: -7px;
+    left: -7px;
+
+    width: 17px;
+    height: 17px;
+
+    cursor: nwse-resize;
+}
+
+.tn-resize-se {
+    right: -7px;
+    bottom: -7px;
+
+    width: 17px;
+    height: 17px;
+
+    cursor: nwse-resize;
+}
+
+.tn-resize-sw {
+    left: -7px;
+    bottom: -7px;
+
+    width: 17px;
+    height: 17px;
+
+    cursor: nesw-resize;
+}
