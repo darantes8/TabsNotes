@@ -1,79 +1,421 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidade - TabNotes</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <meta name="description" content="Política de Privacidade da extensão TabNotes para Google Chrome." />
+  <title>Política de Privacidade — TabNotes</title>
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #172033;
+      --muted: #667085;
+      --border: #e6eaf0;
+      --primary: #5b5bd6;
+      --primary-dark: #4343b8;
+      --accent: #ececff;
+      --success: #19725d;
+      --shadow: 0 18px 50px rgba(23, 32, 51, 0.08);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --max-width: 920px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(91, 91, 214, 0.10), transparent 32rem),
+        linear-gradient(180deg, #fafbff 0%, var(--bg) 100%);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+      padding: 48px 0 64px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .logo {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), #8888f3);
+      box-shadow: 0 8px 24px rgba(91, 91, 214, 0.28);
+      font-size: 21px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      padding: 42px;
+      border: 1px solid rgba(91, 91, 214, 0.12);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(91, 91, 214, 0.10), rgba(255, 255, 255, 0.94) 45%),
+        var(--surface);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--primary-dark);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1,
+    h2 {
+      margin-top: 0;
+      letter-spacing: -0.035em;
+    }
+
+    h1 {
+      max-width: 700px;
+      margin-bottom: 14px;
+      font-size: clamp(34px, 6vw, 52px);
+      line-height: 1.08;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .summary-card {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .summary-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .summary-card span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .content {
+      display: grid;
+      gap: 16px;
+    }
+
+    .section {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 8px 28px rgba(23, 32, 51, 0.045);
+    }
+
+    .section h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .icon {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-size: 17px;
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .section p + p {
+      margin-top: 12px;
+    }
+
+    .notice {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--success);
+      border-radius: 10px;
+      background: #f0faf6;
+      color: #315e51;
+    }
+
+    ul {
+      margin: 14px 0 0;
+      padding-left: 22px;
+      color: var(--muted);
+    }
+
+    li + li {
+      margin-top: 7px;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 28px;
+      padding: 18px 4px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-note {
+      max-width: 620px;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(calc(100% - 22px), var(--max-width));
+        padding-top: 24px;
+      }
+
+      .hero {
+        padding: 28px 22px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 24px 20px;
+      }
+
+      .topbar,
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <main>
-        <h1>Política de Privacidade — TabNotes</h1>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">T</div>
+        <span>TabNotes</span>
+      </div>
+
+      <span class="tag">Política de Privacidade</span>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">Privacidade por padrão</div>
+
+      <h1>Suas notas ficam no seu navegador.</h1>
+
+      <p>
+        O TabNotes foi criado para permitir que você mantenha notas flutuantes
+        diretamente nas abas do Google Chrome, sem depender de servidores
+        externos para armazenar o conteúdo que você escreve.
+      </p>
+
+      <div class="summary">
+        <div class="summary-card">
+          <strong>Armazenamento local</strong>
+          <span>As notas permanecem no ambiente do navegador.</span>
+        </div>
+
+        <div class="summary-card">
+          <strong>Sem rastreamento</strong>
+          <span>Não usamos seus dados para publicidade ou criação de perfis.</span>
+        </div>
+
+        <div class="summary-card">
+          <strong>Sem venda de dados</strong>
+          <span>As informações não são vendidas nem compartilhadas com terceiros.</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="content">
+      <section class="section">
+        <h2><span class="icon">📝</span> Dados armazenados</h2>
 
         <p>
-            O TabNotes é uma extensão para Google Chrome que permite criar
-            e organizar notas flutuantes diretamente nas abas do navegador.
+          O TabNotes armazena somente as informações necessárias para oferecer
+          sua funcionalidade principal: o conteúdo das notas criadas pelo
+          próprio usuário e as preferências associadas a essas notas.
         </p>
 
-        <h2>Dados armazenados</h2>
+        <ul>
+          <li>título e texto da nota;</li>
+          <li>cor, posição e tamanho;</li>
+          <li>tamanho da fonte e alinhamento;</li>
+          <li>estado minimizado e demais preferências visuais.</li>
+        </ul>
+
+        <div class="notice">
+          Esses dados são armazenados utilizando as APIs de armazenamento do
+          Google Chrome e não são enviados para servidores do desenvolvedor.
+        </div>
+      </section>
+
+      <section class="section">
+        <h2><span class="icon">🔒</span> Dados que não coletamos</h2>
+
+        <p>O TabNotes não coleta ou armazena deliberadamente:</p>
+
+        <ul>
+          <li>nome, endereço de e-mail ou outras informações de identificação pessoal;</li>
+          <li>informações financeiras ou de pagamento;</li>
+          <li>informações de saúde;</li>
+          <li>senhas, credenciais ou dados de autenticação;</li>
+          <li>localização do usuário;</li>
+          <li>histórico de navegação;</li>
+          <li>conteúdo das páginas visitadas;</li>
+          <li>dados para publicidade, rastreamento ou análise comportamental.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2><span class="icon">↗</span> Transmissão e compartilhamento</h2>
 
         <p>
-            O TabNotes armazena somente as informações necessárias para sua
-            funcionalidade principal, incluindo o conteúdo das notas criadas
-            pelo próprio usuário e preferências como título, cor, posição,
-            tamanho, fonte, alinhamento e estado de minimização.
+          O TabNotes não transmite o conteúdo das suas notas para servidores
+          externos e não vende, aluga ou compartilha esses dados com terceiros.
         </p>
 
         <p>
-            Esses dados são armazenados localmente no navegador utilizando
-            as APIs de armazenamento do Google Chrome.
+          Também não utilizamos as informações armazenadas pela extensão para
+          publicidade, marketing, criação de perfis ou finalidades não
+          relacionadas ao funcionamento do TabNotes.
         </p>
+      </section>
+
+      <section class="section">
+        <h2><span class="icon">🕶️</span> Navegação anônima</h2>
 
         <p>
-            O TabNotes não coleta nomes, endereços de e-mail, informações
-            financeiras, informações de saúde, credenciais, localização,
-            histórico de navegação ou conteúdo das páginas visitadas.
+          Quando o TabNotes é utilizado em uma janela anônima, os dados são
+          mantidos utilizando armazenamento temporário de sessão do Chrome,
+          respeitando o funcionamento específico desse modo de navegação.
         </p>
+      </section>
 
-        <h2>Transmissão de dados</h2>
+      <section class="section">
+        <h2><span class="icon">🗑️</span> Exclusão dos dados</h2>
 
         <p>
-            O TabNotes não envia o conteúdo das notas ou outras informações
-            do usuário para servidores externos.
+          O usuário pode excluir suas notas diretamente pela interface da
+          extensão. Os dados armazenados pelo TabNotes também podem ser
+          removidos através dos recursos do próprio navegador ou ao
+          desinstalar a extensão.
         </p>
+      </section>
+
+      <section class="section">
+        <h2><span class="icon">⚙️</span> Alterações nesta política</h2>
 
         <p>
-            Nenhum dado é vendido, compartilhado ou transferido para terceiros.
+          Esta Política de Privacidade poderá ser atualizada caso o TabNotes
+          passe a oferecer novas funcionalidades ou altere a forma como os
+          dados são tratados. Quando isso acontecer, esta página será
+          atualizada para refletir o comportamento vigente da extensão.
         </p>
+      </section>
 
-        <h2>Publicidade e rastreamento</h2>
+      <section class="section">
+        <h2><span class="icon">✉️</span> Contato</h2>
 
         <p>
-            O TabNotes não utiliza dados para publicidade, rastreamento,
-            criação de perfis ou análise de comportamento.
+          Para dúvidas relacionadas à privacidade ou ao funcionamento do
+          TabNotes, utilize o endereço de suporte informado na página oficial
+          da extensão na Chrome Web Store ou no repositório oficial do projeto.
         </p>
+      </section>
+    </div>
 
-        <h2>Armazenamento</h2>
-
-        <p>
-            Em abas normais, as notas são armazenadas localmente pelo Google
-            Chrome. Em navegação anônima, são utilizados dados temporários
-            de sessão.
-        </p>
-
-        <h2>Exclusão dos dados</h2>
-
-        <p>
-            O usuário pode excluir suas notas diretamente pela extensão.
-            Os dados da extensão também podem ser removidos ao desinstalar
-            o TabNotes.
-        </p>
-
-        <h2>Contato</h2>
-
-        <p>
-            Para dúvidas relacionadas à privacidade, utilize o endereço de
-            suporte informado na página do TabNotes na Chrome Web Store.
-        </p>
-    </main>
+    <footer>
+      <div class="footer-note">
+        TabNotes — notas flutuantes independentes por aba para Google Chrome.
+      </div>
+      <div>Última atualização: setembro de 2026</div>
+    </footer>
+  </main>
 </body>
 </html>
+
